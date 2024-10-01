@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>ThreeSumTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ThreeSumTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">edu</span><span class="s2">.</span><span class="s1">neu</span><span class="s2">.</span><span class="s1">coe</span><span class="s2">.</span><span class="s1">info6205</span><span class="s2">.</span><span class="s1">threesum</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">jupiter</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">Test</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Arrays</span><span class="s2">;</span>
+<span class="s0">import static </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">jupiter</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">Assertions</span><span class="s2">.*;</span>
+
+<span class="s0">class </span><span class="s1">ThreeSumTest </span><span class="s2">{</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">void </span><span class="s1">testGetTriples0</span><span class="s2">() {</span>
+        <span class="s0">int</span><span class="s2">[] </span><span class="s1">array </span><span class="s2">= {-</span><span class="s3">1</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s3">1</span><span class="s2">, </span><span class="s3">2</span><span class="s2">, -</span><span class="s3">1</span><span class="s2">, -</span><span class="s3">4</span><span class="s2">};</span>
+        <span class="s1">Arrays</span><span class="s2">.</span><span class="s1">sort</span><span class="s2">(</span><span class="s1">array</span><span class="s2">);  </span><span class="s4">// Ensure the array is sorted</span>
+        <span class="s1">ThreeSumQuadrithmic threeSumQuadrithmic </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ThreeSumQuadrithmic</span><span class="s2">(</span><span class="s1">array</span><span class="s2">);</span>
+        <span class="s1">Triple</span><span class="s2">[] </span><span class="s1">triples </span><span class="s2">= </span><span class="s1">threeSumQuadrithmic</span><span class="s2">.</span><span class="s1">getTriples</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s3">2</span><span class="s2">, </span><span class="s1">triples</span><span class="s2">.</span><span class="s1">length</span><span class="s2">);  </span><span class="s4">// We expect 2 unique triples</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">Arrays</span><span class="s2">.</span><span class="s1">asList</span><span class="s2">(</span><span class="s1">triples</span><span class="s2">).</span><span class="s1">contains</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Triple</span><span class="s2">(-</span><span class="s3">1</span><span class="s2">, -</span><span class="s3">1</span><span class="s2">, </span><span class="s3">2</span><span class="s2">)));</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">Arrays</span><span class="s2">.</span><span class="s1">asList</span><span class="s2">(</span><span class="s1">triples</span><span class="s2">).</span><span class="s1">contains</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Triple</span><span class="s2">(-</span><span class="s3">1</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s3">1</span><span class="s2">)));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">void </span><span class="s1">testGetTriples2</span><span class="s2">() {</span>
+        <span class="s0">int</span><span class="s2">[] </span><span class="s1">array </span><span class="s2">= {</span><span class="s3">1</span><span class="s2">, </span><span class="s3">2</span><span class="s2">, -</span><span class="s3">2</span><span class="s2">, -</span><span class="s3">1</span><span class="s2">};  </span><span class="s4">// Case where no valid triples exist</span>
+        <span class="s1">Arrays</span><span class="s2">.</span><span class="s1">sort</span><span class="s2">(</span><span class="s1">array</span><span class="s2">);  </span><span class="s4">// Ensure the array is sorted</span>
+        <span class="s1">ThreeSumQuadrithmic threeSumQuadrithmic </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ThreeSumQuadrithmic</span><span class="s2">(</span><span class="s1">array</span><span class="s2">);</span>
+        <span class="s1">Triple</span><span class="s2">[] </span><span class="s1">triples </span><span class="s2">= </span><span class="s1">threeSumQuadrithmic</span><span class="s2">.</span><span class="s1">getTriples</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s1">triples</span><span class="s2">.</span><span class="s1">length</span><span class="s2">);  </span><span class="s4">// We expect no triples</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">void </span><span class="s1">testThreeSumQuadrithmic</span><span class="s2">() {</span>
+        <span class="s0">int</span><span class="s2">[] </span><span class="s1">array </span><span class="s2">= {-</span><span class="s3">1</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s3">1</span><span class="s2">, </span><span class="s3">2</span><span class="s2">, -</span><span class="s3">1</span><span class="s2">, -</span><span class="s3">4</span><span class="s2">};</span>
+        <span class="s1">Arrays</span><span class="s2">.</span><span class="s1">sort</span><span class="s2">(</span><span class="s1">array</span><span class="s2">);  </span><span class="s4">// Ensure the array is sorted</span>
+        <span class="s1">ThreeSumQuadrithmic threeSum </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ThreeSumQuadrithmic</span><span class="s2">(</span><span class="s1">array</span><span class="s2">);</span>
+        <span class="s1">Triple</span><span class="s2">[] </span><span class="s1">triples </span><span class="s2">= </span><span class="s1">threeSum</span><span class="s2">.</span><span class="s1">getTriples</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s3">2</span><span class="s2">, </span><span class="s1">triples</span><span class="s2">.</span><span class="s1">length</span><span class="s2">);  </span><span class="s4">// We expect 2 unique triples</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">Arrays</span><span class="s2">.</span><span class="s1">asList</span><span class="s2">(</span><span class="s1">triples</span><span class="s2">).</span><span class="s1">contains</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Triple</span><span class="s2">(-</span><span class="s3">1</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s3">1</span><span class="s2">)));</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">Arrays</span><span class="s2">.</span><span class="s1">asList</span><span class="s2">(</span><span class="s1">triples</span><span class="s2">).</span><span class="s1">contains</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Triple</span><span class="s2">(-</span><span class="s3">1</span><span class="s2">, -</span><span class="s3">1</span><span class="s2">, </span><span class="s3">2</span><span class="s2">)));</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
